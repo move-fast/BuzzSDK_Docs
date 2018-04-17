@@ -13,10 +13,22 @@ dependencies {
 }
 ```
 
+You need to enable Java 8 compatibility.
+
+```groovy
+android {
+    //...
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+```
+
 Also add the following to your project `build.gradle` file.
 
 ```groovy
-buildscript {
+allprojects {
     repositories {
         //...
         maven { url "https://s3-eu-west-1.amazonaws.com/movefast-quickhost/buzzsdk" }

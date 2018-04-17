@@ -19,6 +19,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://s3-eu-west-1.amazonaws.com/movefast-quickhost/buzzsdk" }
     }
 }
 
