@@ -16,7 +16,7 @@ target 'YOUR_APPLICATION_TARGET_NAME_HERE' do
   pod 'BuzzSDK', '2.4.0'
 end
 ```
-1. Then, run the following command: 
+2. Then, run the following command: 
 ```shell
 $ pod install
 ```
