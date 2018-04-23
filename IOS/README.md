@@ -1,6 +1,4 @@
-# Getting Started IOS
-
-This page will help you get started with BuzzSDK on IOS.
+# Getting Started
 
 ## Add the SDK to your project
 
@@ -162,7 +160,7 @@ func buzzSDKRemoveAdsButtonTapped() {
 }
 ```
 ## Advance Configuration Options
-_BuzzSDK_ allows you also to define the following options. Just add the `key : value` pairs to the options dictionary when starting the _BuzzSDK_ using the [`startWithAPIKey:secretKey:andSDKOptions:`](doc:startwithapikeysecretkeyandsdkoptions) or [`startWithAPIKey:secretKey:groupId:andSDKOptions:`](doc:startwithapikeysecretkeygroupidandsdkoptions) class methods.
+_BuzzSDK_ allows you also to define the following options. Just add the `key : value` pairs to the options dictionary when starting the _BuzzSDK_ using the [`startWithAPIKey:secretKey:andSDKOptions:`](#startwithapikeysecretkeyandsdkoptions) or [`startWithAPIKey:secretKey:groupId:andSDKOptions:`](#startwithapikeysecretkeygroupidandsdkoptions) class methods.
 
 | Resource key | Resource type/values | Description |
 | ------------ | -------------------- | ----------- |
@@ -183,3 +181,21 @@ When presenting video content in addition to video ads, the style of the _title_
 | `kBUZZSDKOptionStyleTitleFontSizeInPIPKey` | **Float**(Point Size)<br>ObjC: Wrapped in NSNumber<br>Swift: Float | The size in points to apply to the title of a video when displayed in Picture In Picture mode.<br>Default value is `12.0` |
 | `kBUZZSDKOptionStyleTitleTextColorKey` | **UIColor** | The UIColor instance to use for the video's title text color when displayed.<br>Default value is `[UIColor whiteColor]` |
 | `kBUZZSDKOptionStyleTitleBackgroundColorKey` | **UIColor** | The UIColor instance to use for the text areas background color on both Full Screen and Picture In Picture mode.<br>Default value is  UIColor with RGBA `0x0000000A` |
+
+# _BuzzSDK_ Class Reference
+
+## startWithAPIKey:secretKey:
+Initialises the _BuzzSDK_. Simplified version of initialisation using default options and default group.
+```objective-c
+// Objective-C
++ (void)startWithAPIKey:(nonnull NSString *)APIKey secretKey:(nonnull NSString *)secretKey;
+}
+```
+```swift
+// Swift
+class func start(withApiKey apiKey : String, secretKey : String)
+```
+| Parameter | Description |
+| --------- | ----------- |
+| `apiKey` | Please contact us to request your app configuration including the keys |
+| `secretKey` | Please contact us to request your app configuration including the keys |
