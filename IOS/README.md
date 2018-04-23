@@ -44,25 +44,31 @@ bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BuzzSDK.framework/ios-stri
 
 1. Open your _AppDelegate.m_ file and import the _BuzzSDK_. 
 ```objective-c
+// Objective-C
 #import <BuzzSDK/BuzzSDK.h>
 ```
 ```swift
+// Swift
 import BuzzSDK
 ```
 2. Copy the lines below and paste them into your AppDelegate’s `application:didFinishLaunchingWithOptions:launchOptions` method 
 ```objective-c
+// Objective-C
 [BuzzSDK startWithAPIKey: @"YOUR_API_KEY" secretKey: @"YOUR_SECRET_KEY"];
 ```
 ```swift
+// Swift
 BuzzSDK.startWithAPIKey("YOUR_API_KEY", secretKey: "YOUR_SECRET_KEY")
 ```
 3. Call [`presentDeck`](doc:presentdeck) class method to display the SDK UI when appropriate. Typically on your `applicationDidBecomeActive` app delegate method call.
 ```objective-c
+// Objective-C
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [BuzzSDK presentDeck];
 }
 ```
 ```swift
+// Swift
 func applicationDidBecomeActive(_ application: UIApplication) {
     BuzzSDK.presentDeck()
 }
