@@ -214,4 +214,80 @@ class func start(withApiKey apiKey : String, secretKey : String, andOptions SDKO
 | --------- | ----------- |
 | `apiKey` | Please contact us to request your app configuration including the keys |
 | `secretKey` | Please contact us to request your app configuration including the keys |
-| `SDKOptions` | See [Getting Started](#getting-started) for options description |
+| `SDKOptions` | See [Configuration Options](#advance-configuration-options) for options description |
+
+## startWithAPIKey:secretKey:groupId:andSDKOptions:
+Initialises _BuzzSDK_ with a group id and options (optional).
+```objective-c
+// Objective-C
++ (void)startWithAPIKey:(nonnull NSString *)APIKey secretKey:(nonnull NSString *)secretKey groupId:(NSInteger)groupId andSDKOptions:(nullable NSDictionary *)SDKOptions;
+```
+```swift
+// Swift
+class func start(withApiKey apiKey : String, secretKey : String, groupId : Int, andOptions SDKOptions [String:AnyHashable]?)
+```
+| Parameter | Description |
+| --------- | ----------- |
+| `apiKey` | Please contact us to request your app configuration including the keys |
+| `secretKey` | Please contact us to request your app configuration including the keys |
+| `groupId` | Id for group configuration when using the _BuzzSDK_ with _Groups_. Contact us for details and groups setup. |
+| `SDKOptions` | See [Configuration Options](#advance-configuration-options) for options description |
+
+## setDelegate
+Sets the delegate object to respond to _BuzzSDK_ call backs.
+```objective-c
+// Objective-C
++ (void)setDelegate:(nonnull NSObject<BuzzSDKDelegate> *)delegate;
+```
+```swift
+// Swift
+class func setDelegate(_ delegate : BuzzSDKDelegate)
+```
+See [_BuzzSDKDelegate_](#buzzsdkdelegate)
+
+## presentDeck
+Starts presentation of the _BuzzSDK_ UI on top of the host app’s UI.
+```objective-c
+// Objective-C
++ (void)presentDeck;
+```
+```swift
+// Swift
+class func presentDeck()
+```
+Call this method when you want to trigger the presentation of the _BuzzSDK_ UI or to show it again after it has been hidden by calling [`hideDeck`](#hidedeck) method.
+It is safe to call this method multiple times, but it only has effect if _BuzzSDK_ UI is not presented yet or hidden.
+
+## pause
+Instructs the _BuzzSDK_ to pause any video that is currently playing.
+```objective-c
+// Objective-C
++ (void)pause
+```
+```swift
+// Swift
+class func pause()
+```
+
+## hideDeck
+Will hide the _BuzzSDK_ UI (if presented) from the user. UI can be brought back on top of the host app UI by calling [`presentDeck`](#presentdeck)  again. If the UI is hidden when the app is sent to the background, the _BuzzSDK_ will be dismissed and calling [`presentDeck`](#presentdeck) will start a new _BuzzSDK_ Session.
+Similarly, calling `hideDeck` before the _BuzzSDK_ UI is set (i.e. while on [`BuzzSDKStateNone`](#buzzsdkstatehaschanged) or [`BuzzSDKStatePrepared`](#buzzsdkstatehaschanged) state) will terminate the _BuzzSDK_ session and calling [`presentDeck`](#presentdeck) will start a new _BuzzSDK_ Session.
+```objective-c
+// Objective-C
++ (void)hideDeck;
+```
+```swift
+// Swift
+class func hideDeck()
+```
+
+## dismissDeck
+Will completely stop the _BuzzSDK_ and remove it from the view hierarchy.
+```objective-c
+// Objective-C
++ (void)dismissDeck;
+```
+```swift
+// Swift
+class func dismissDeck()
+```
