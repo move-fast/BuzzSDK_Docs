@@ -291,3 +291,57 @@ Will completely stop the _BuzzSDK_ and remove it from the view hierarchy.
 // Swift
 class func dismissDeck()
 ```
+
+# _BuzzSDKDelegate_ Protocol
+
+## BuzzSDKDelegate
+The methods declared by the _BuzzSDKDelegate_ protocol allow the adopting delegate to respond to messages from the _BuzzSDK_ class and thus respond to, and in some affect, UI interactions such as tapping on _Remove Ads_ alert _OK_ button, starting video playback, hiding or showing the UI, etc.
+
+**Methods**
+-  [`buzzSDKRemoveAdsButtonTapped`](#buzzsdkremoveadsbuttontapped) 
+-  [`buzzSDKHasStartedVideoPlayback`](#buzzsdkhasstartedvideoplayback)  
+-  [`buzzSDKStateHasChanged:`](#buzzsdkstatehaschanged)
+
+### buzzSDKRemoveAdsButtonTapped
+```objective-c
+// Objective-C
+- (void)buzzSDKRemoveAdsButtonTapped;
+```
+```swift
+// Swift
+func buzzSDKRemoveAdsButtonTapped()
+```
+**Discussion**
+If the  _Remove Ads Alert_ is presented, the _BuzzSDK_ will call your implementation of this method when the user taps on the **OK** button of the alert view. It is your responsibility to act upon this call and direct the user to the appropriate section on your app where he/she can for instance subscribe to an Ad free version of your app.
+
+### buzzSDKHasStartedVideoPlayback
+```objective-c
+// Objective-C
+- (void)buzzSDKHasStartedVideoPlayback;
+```
+```swift
+// Swift
+func buzzSDKHasStartedVideoPlayback()
+```
+**Discussion**
+Notifies the delegate that the _BuzzSDK_ has started playback of video content. This will be notified every time video playback starts on any content element.
+
+### buzzSDKStateHasChanged:
+```objective-c
+// Objective-C
+- (void)buzzSDKStateHasChanged:(BuzzSDKState)state
+```
+```swift
+// Swift
+func buzzSDKStateHasChanged(_ state: BuzzSDKState)
+```
+**Discussion**
+Notifies the delegate of a state change on the _BuzzSDK_. When started the _BussSDK_ state is always `BuzzSDKStateNone`.
+
+The states are:
+- `BuzzSDKStateNone`: The _BuzzSDK_ has been initialised, but the configuration not loaded and its UI hierarchy is not set.
+- `BuzzSDKStatePreparing`: The _BuzzSDK_ is fetching configuration from backend in preparation for presentation. This state is triggered after calling [`presentDeck`](#presentDeck) while in  `BuzzSDKStateNone` state.
+- `BuzzSDKStatePrepared`: The _BuzzSDK_ configuration has been fetched, and content has started to load, the UI Hierarchy is not yet set and no content is currently being presented.
+- `BuzzSDKStatePresenting`: The _BuzzSDK_ UI Hierarchy is set, and content is currently being presented.
+- `BuzzSDKStateHiddenByHostApp`: The _BuzzSDK_ UI Hierarchy is set, content is displayed but currently hidden by host app request. User can not manually show it again but host app can by calling [`presentDeck`](#presentdeck) class method.
+- `BuzzSDKStateHiddenByUser`: The _BuzzSDK_ UI Hierarchy is set, content is displayed but currently hidden by user request. A `Show Videos` buttons is displayed so user can show the UI again on request.
