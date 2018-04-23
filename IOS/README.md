@@ -16,3 +16,10 @@ target 'YOUR_APPLICATION_TARGET_NAME_HERE' do
   pod 'BuzzSDK', '2.4.0'
 end
 ```
+1. Then, run the following command: 
+```shell
+$ pod install
+```
+
+### Manually
+1. Drag **BuzzSDK.framework** to the **Embedded Binaries** section in the _General_ tap of your project's main target. Check _Copy items if needed_ and choose to _Create groups_.
