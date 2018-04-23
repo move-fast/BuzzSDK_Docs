@@ -161,3 +161,8 @@ func buzzSDKRemoveAdsButtonTapped() {
     print("Remove Ads button Tapped")
 }
 ```
+## Advance Configuration Options
+_BuzzSDK_ allows you also to define the following options. Just add the `key : value` pairs to the options dictionary when starting the _BuzzSDK_ using the [`startWithAPIKey:secretKey:andSDKOptions:`](doc:startwithapikeysecretkeyandsdkoptions) or [`startWithAPIKey:secretKey:groupId:andSDKOptions:`](doc:startwithapikeysecretkeygroupidandsdkoptions) class methods.
+| Config attribute | Resource key | Resource type/values | Description |
+| ---------------- | ------------ | -------------------- | ----------- |
+| Log level | `kBUZZSDKOptionLogLevel` | Enum/nObjC: Wrapped in NSNumber /nSwift: Int (Enum raw value)/n- BUZZSDKLogLevelNone/n- BUZZSDKLogLevelError/n- BUZZSDKLogLevelWarning/n- BUZZSDKLogLevelInfo/n- BUZZSDKLogLevelDebug | Define the log level to be used by the SDK in your app. |
