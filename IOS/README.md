@@ -214,4 +214,4 @@ class func start(withApiKey apiKey : String, secretKey : String, andOptions SDKO
 | --------- | ----------- |
 | `apiKey` | Please contact us to request your app configuration including the keys |
 | `secretKey` | Please contact us to request your app configuration including the keys |
-| `SDKOptions` | See (#getting-started) for options description |
+| `SDKOptions` | See [Getting Started](#getting-started) for options description |
