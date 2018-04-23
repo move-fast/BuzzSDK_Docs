@@ -199,3 +199,19 @@ class func start(withApiKey apiKey : String, secretKey : String)
 | --------- | ----------- |
 | `apiKey` | Please contact us to request your app configuration including the keys |
 | `secretKey` | Please contact us to request your app configuration including the keys |
+
+## startWithAPIKey:secretKey:andSDKOptions:
+Initialises the _BuzzSDK_ including options and using default group.
+```objective-c
+// Objective-C
++ (void)startWithAPIKey:(nonnull NSString *)APIKey secretKey:(nonnull NSString *)secretKey andSDKOptions:(nullable NSDictionary *)SDKOptions;
+```
+```swift
+// Swift
+class func start(withApiKey apiKey : String, secretKey : String, andOptions SDKOptions [String:AnyHashable]?)
+```
+| Parameter | Description |
+| --------- | ----------- |
+| `apiKey` | Please contact us to request your app configuration including the keys |
+| `secretKey` | Please contact us to request your app configuration including the keys |
+| `SDKOptions` | See (#getting-started) for options description |
