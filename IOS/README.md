@@ -1,3 +1,8 @@
+# BuzzSDK Documentation for IOS
+1. [Getting Started](#getting-started)
+2. [_BuzzSDK_ Class Reference](#buzzsdk-class-reference)
+3. [_BuzzSDKDelegate_ Protocol](#buzzsdkdelegate-protocol)
+
 # Getting Started
 
 ## Add the SDK to your project
