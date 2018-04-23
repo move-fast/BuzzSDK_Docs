@@ -73,4 +73,91 @@ func applicationDidBecomeActive(_ application: UIApplication) {
     BuzzSDK.presentDeck()
 }
 ```
-### PresentDeck
+
+## Try it out
+You can implement the SDK and try it out with our generic test credentials. Just copy the snippet below as your initialisation call and you could see it on action.
+```objective-c
+// Objective-C
+[BuzzSDK startWithAPIKey: @"e78grdmnqainn9pnz6fllabyzjxptpdq" secretKey: @"0pwb6ep3em0t3dsamr0wqn1lin3h9tir"];
+```
+```swift
+// Swift
+BuzzSDK.startWithAPIKey("e78grdmnqainn9pnz6fllabyzjxptpdq", secretKey: "0pwb6ep3em0t3dsamr0wqn1lin3h9tir")
+```
+Please contact us to get the BuzzSDK files if you are not using CocoaPods
+
+## Setup with Delegate
+In most cases you would like to receive notifications from _BuzzSDK_ for specific important events. 
+For this reasons, the _BuzzSDK_ class can have a delegate that must adopt the [_BuzzSDKDelegate_](#buzzsdkdelegate) protocol.
+
+To setup a delegate call the [`setDelegate:`](#setdelegate)  class method of the _BuzzSDK_ class after your call to start. For example:
+```objective-c
+// Objective-C
+[BuzzSDK startWithAPIKey: @"YOUR_API_KEY" secretKey: @"YOUR_SECRET_KEY" andSDKOptions:nil];
+[BuzzSDK setDelegate:self];
+```
+```swift
+// Swift
+BuzzSDK.startWithAPIKey("YOUR_API_KEY", secretKey: "YOUR_SECRET_KEY", andSDKOptions: nil)
+BuzzSDK.setDelegate(self)
+```
+## Setup with Groups
+_Groups_ allow you to split users into several groups with different sets of online configuration settings. Groups and online configuration settings are managed via _BuzzSDK_ dashboard (please contact us for access to the dashboard).
+
+When using groups you must initialise the _BuzzSDK_ by calling the  [`startWithAPIKey:secretKey:groupId:andSDKOptions:`](#startwithapikeysecretkeygroupidandsdkoptions) class method. For example:
+```objective-c
+// Objective-C
+[BuzzSDK startWithAPIKey: @"YOUR_API_KEY" secretKey: @"YOUR_SECRET_KEY" groupId:0 andSDKOptions:nil];
+```
+```swift
+// Swift
+BuzzSDK.startWithAPIKey("YOUR_API_KEY", secretKey: "YOUR_SECRET_KEY", groupId: 0, andSDKOptions: nil)
+```
+## Setup with `Remove Ads Alert` option
+When your account configuration provide Ads, you can setup the _BuzzSDK_ to present a custom alert that allow the user to opt for an Ad free version of the app via payment or subscriptions.
+
+To present such an alert the host app will need to provide the text string for the alert message in the `kBUZZSDKOptionRemoveAdsAlertTextKey` option when starting the _BuzzSDK_. If this string is not provided the alert will never be presented. 
+Options are provided as a dictionary when starting the _BuzzSDK_ using the [`startWithAPIKey:secretKey:andSDKOptions:`](#startwithapikeysecretkeyandsdkoptions) or [`startWithAPIKey:secretKey:groupId:andSDKOptions:`](#startwithapikeysecretkeygroupidandsdkoptions) class methods.
+```objective-c
+// Objective-C
+@interface AppDelegate () <BuzzSDKDelegate>
+
+  ...
+
+NSDictionary *sdkOptions = @{
+  // Remove Ads Alerte Text
+  kBUZZSDKOptionRemoveAdsAlertTextKey : @"Would you like to stop seeing ads on your app?\nTap OK for premium!",
+};
+
+[BuzzSDK startWithAPIKey: @"YOUR_API_KEY" secretKey: @"YOUR_SECRET_KEY" andSDKOptions:sdkOptions];
+[BuzzSDK setDelegate:self];
+```
+```swift
+// Swift
+class AppDelegate: UIResponder, UIApplicationDelegate, BuzzSDKDelegate
+
+...
+
+let sdkOptions = [
+  // Remove Ads Alerte Text
+  kBUZZSDKOptionRemoveAdsAlertTextKey : "Would you like to stop seeing ads on your app?\nTap OK for premium!",
+]
+
+BuzzSDK.startWithAPIKey("YOUR_API_KEY", secretKey: "YOUR_SECRET_KEY", andSDKOptions: sdkOptions)
+BuzzSDK.setDelegate(self)BuzzSDK
+```
+If the  _Remove Ads Alert_ is presented, the _BuzzSDK_ will call your implementation of [`BuzzSDKDelegate`](#buzzsdkdelegate) method [`buzzSDKRemoveAdsButtonTapped`](#buzzsdkremoveadsbuttontapped) when the user taps on the OK button of the alert view. It is your responsibility to act upon this call and direct the user to the appropriate section on your app where he/she can for instance subscribe to an Ad free version of your app. 
+```objective-c
+// Objective-C
+- (void)buzzSDKRemoveAdsButtonTapped {
+    // Direct your UI for instance to Subscribe section,
+  NSLog(@"Remove Ads button Tapped"); 
+}
+```
+```swift
+// Swift
+func buzzSDKRemoveAdsButtonTapped() {
+    // Direct your UI for instance to Subscribe section
+    print("Remove Ads button Tapped")
+}
+```
