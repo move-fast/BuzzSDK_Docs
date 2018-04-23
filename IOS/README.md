@@ -24,7 +24,7 @@ $ pod install
 ### Manually
 1. Drag **BuzzSDK.framework** to the **Embedded Binaries** section in the _General_ tap of your project's main target. Check _Copy items if needed_ and choose to _Create groups_.
 
-![Drag to Embedd](/Images/IOS_Image01.jpg)
+![Drag to Embedd](/IOS/Images/IOS_Image01.jpg)
 
 2. Add a new Run Script Phase in your target’s Build Phases.
 **IMPORTANT**: Make sure this Run Script Phase is below the Embed Frameworks build phase.
@@ -34,11 +34,11 @@ Paste the following line in this Run Script Phase's script text field:
 bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BuzzSDK.framework/ios-strip-frameworks.sh" BuzzSDK
 ```
 
-![Build Phases](/Images/IOS_Image02.png)
+![Build Phases](/IOS/Images/IOS_Image02.png)
 
 3. (Ignore if your project is a Swift only project) - Set the **Always Embed Swift Standard Libraries** setting in your targets _Build Settings_ to **YES**
 
-![Allways Embed Swift](/Images/IOS_Image03.png)
+![Allways Embed Swift](/IOS/Images/IOS_Image03.png)
 
 ## Quick Launch
 
