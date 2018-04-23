@@ -164,10 +164,22 @@ func buzzSDKRemoveAdsButtonTapped() {
 ## Advance Configuration Options
 _BuzzSDK_ allows you also to define the following options. Just add the `key : value` pairs to the options dictionary when starting the _BuzzSDK_ using the [`startWithAPIKey:secretKey:andSDKOptions:`](doc:startwithapikeysecretkeyandsdkoptions) or [`startWithAPIKey:secretKey:groupId:andSDKOptions:`](doc:startwithapikeysecretkeygroupidandsdkoptions) class methods.
 
-| Config attribute | Resource key | Resource type/values | Description |
-| ---------------- | ------------ | -------------------- | ----------- |
-| Log level | `kBUZZSDKOptionLogLevel` | **Enum**<br>ObjC: Wrapped in NSNumber<br>Swift: Int (Enum raw value)<br>`BUZZSDKLogLevelNone`<br>`BUZZSDKLogLevelError`<br>`BUZZSDKLogLevelWarning`<br>`BUZZSDKLogLevelInfo`<br>`BUZZSDKLogLevelDebug` | Define the log level to be used by the SDK in your app. |
-| Max inactive time | `kBUZZSDKOptionMaxTimeToLiveWhileAppInactiveKey` | **Int**(seconds)<br>ObjC: Wrapped in NSNumber<br>Swift: Int | Indicates maximum amount of time which SDK Deck is allowed to stay present if the app has been made inactive (in seconds).<br>Default value is 600 seconds (10 minutes) |
-| No Ads | `kBUZZSDKOptionNoAdsKey` | **Bool**<br>ObjC: Wrapped in NSNumber<br>Swift: Bool | This option will indicates that the SDK should ignore any Ads provided by the backend config for the SDK session.<br>This will be used when the host app still wants to present the SDK for content but no Ads (i.e. if the user is for example a subscribed user)<br>Default value is `false` |
+| Resource key | Resource type/values | Description |
+| ------------ | -------------------- | ----------- |
+| `kBUZZSDKOptionLogLevel` | **Enum**<br>ObjC: Wrapped in NSNumber<br>Swift: Int (Enum raw value)<br>`BUZZSDKLogLevelNone`<br>`BUZZSDKLogLevelError`<br>`BUZZSDKLogLevelWarning`<br>`BUZZSDKLogLevelInfo`<br>`BUZZSDKLogLevelDebug` | Define the log level to be used by the SDK in your app. |
+| `kBUZZSDKOptionMaxTimeToLiveWhileAppInactiveKey` | **Int**(seconds)<br>ObjC: Wrapped in NSNumber<br>Swift: Int | Indicates maximum amount of time which SDK Deck is allowed to stay present if the app has been made inactive (in seconds).<br>Default value is 600 seconds (10 minutes) |
+| `kBUZZSDKOptionNoAdsKey` | **Bool**<br>ObjC: Wrapped in NSNumber<br>Swift: Bool | This option will indicates that the SDK should ignore any Ads provided by the backend config for the SDK session.<br>This will be used when the host app still wants to present the SDK for content but no Ads (i.e. if the user is for example a subscribed user)<br>Default value is `false` |
 
 When presenting video content in addition to video ads, the style of the _title_ and _kicker_ of videos while presented in Full Screen or Picture in Picture mode can be configured as options in the same way by passing the `key : value` pairs below:
+
+| Resource key | Resource type/values | Description |
+| ------------ | -------------------- | ----------- |
+| `kBUZZSDKOptionStyleKickerFontNameKey` | **String**<br>ObjC: NSString<br>Swift: String | The PostScript name of the Font for the kicker of the videos when displayed. See note below regarding custom fonts.<br>Default value is `HelveticaNeue-Bold` |
+| `kBUZZSDKOptionStyleKickerFontSizeInFullscreenKey` | **Float**(Point Size)<br>ObjC: Wrapped in NSNumber<br>Swift: Float | The size in points to apply to the kicker of a video when displayed in Full Screen mode .<br>Default value is `12.0` |
+| `kBUZZSDKOptionStyleKickerFontSizeInPIPKey` | **Float**(Point Size)<br>ObjC: Wrapped in NSNumber<br>Swift: Float | The size in points to apply to the kicker of a video when displayed in Picture In Picture mode .<br>Default value is `10.0` |
+| `kBUZZSDKOptionStyleKickerTextColorKey` | **UIColor** | The UIColor instance to use for the video's kicker text color when displayed.<br>Default value is `[UIColor whiteColor]` |
+| `kBUZZSDKOptionStyleTitleFontNameKey` | **String**<br>ObjC: NSString<br>Swift: String | The PostScript name of the Font for the video's title when displayed See note below regarding custom fonts.<br>Default value is `HelveticaNeue` |
+| `kBUZZSDKOptionStyleTitleFontSizeInFullscreenKey` | **Float**(Point Size)<br>ObjC: Wrapped in NSNumber<br>Swift: Float | The size in points to apply to the title of a video when displayed in Full Screen mode.<br>Default value is `15.0` |
+| `kBUZZSDKOptionStyleTitleFontSizeInPIPKey` | **Float**(Point Size)<br>ObjC: Wrapped in NSNumber<br>Swift: Float | The size in points to apply to the title of a video when displayed in Picture In Picture mode.<br>Default value is `12.0` |
+| `kBUZZSDKOptionStyleTitleTextColorKey` | **UIColor** | The UIColor instance to use for the video's title text color when displayed.<br>Default value is `[UIColor whiteColor]` |
+| `kBUZZSDKOptionStyleTitleBackgroundColorKey` | **UIColor** | The UIColor instance to use for the text areas background color on both Full Screen and Picture In Picture mode.<br>Default value is  UIColor with RGBA `0x0000000A` |
