@@ -166,4 +166,8 @@ _BuzzSDK_ allows you also to define the following options. Just add the `key : v
 
 | Config attribute | Resource key | Resource type/values | Description |
 | ---------------- | ------------ | -------------------- | ----------- |
-| Log level | `kBUZZSDKOptionLogLevel` | Enum/nObjC: Wrapped in NSNumber<br>Swift: Int (Enum raw value)<br>- `BUZZSDKLogLevelNone`<br>- `BUZZSDKLogLevelError`<br>- `BUZZSDKLogLevelWarning`<br>- `BUZZSDKLogLevelInfo`<br>- `BUZZSDKLogLevelDebug` | Define the log level to be used by the SDK in your app. |
+| Log level | `kBUZZSDKOptionLogLevel` | **Enum**<br>ObjC: Wrapped in NSNumber<br>Swift: Int (Enum raw value)<br>`BUZZSDKLogLevelNone`<br>`BUZZSDKLogLevelError`<br>`BUZZSDKLogLevelWarning`<br>`BUZZSDKLogLevelInfo`<br>`BUZZSDKLogLevelDebug` | Define the log level to be used by the SDK in your app. |
+| Max inactive time | `kBUZZSDKOptionMaxTimeToLiveWhileAppInactiveKey` | **Int**(seconds)<br>ObjC: Wrapped in NSNumber<br>Swift: Int | Indicates maximum amount of time which SDK Deck is allowed to stay present if the app has been made inactive (in seconds).<br>Default value is 600 seconds (10 minutes) |
+| No Ads | `kBUZZSDKOptionNoAdsKey` | **Bool**<br>ObjC: Wrapped in NSNumber<br>Swift: Bool | This option will indicates that the SDK should ignore any Ads provided by the backend config for the SDK session.<br>This will be used when the host app still wants to present the SDK for content but no Ads (i.e. if the user is for example a subscribed user)<br>Default value is `false` |
+
+When presenting video content in addition to video ads, the style of the _title_ and _kicker_ of videos while presented in Full Screen or Picture in Picture mode can be configured as options in the same way by passing the `key : value` pairs below:
