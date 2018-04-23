@@ -166,4 +166,4 @@ _BuzzSDK_ allows you also to define the following options. Just add the `key : v
 
 | Config attribute | Resource key | Resource type/values | Description |
 | ---------------- | ------------ | -------------------- | ----------- |
-| Log level | `kBUZZSDKOptionLogLevel` | Enum/nObjC: Wrapped in NSNumber /nSwift: Int (Enum raw value)/n- BUZZSDKLogLevelNone/n- BUZZSDKLogLevelError/n- BUZZSDKLogLevelWarning/n- BUZZSDKLogLevelInfo/n- BUZZSDKLogLevelDebug | Define the log level to be used by the SDK in your app. |
+| Log level | `kBUZZSDKOptionLogLevel` | Enum/nObjC: Wrapped in NSNumber<br>Swift: Int (Enum raw value)<br>- `BUZZSDKLogLevelNone`<br>- `BUZZSDKLogLevelError`<br>- `BUZZSDKLogLevelWarning`<br>- `BUZZSDKLogLevelInfo`<br>- `BUZZSDKLogLevelDebug` | Define the log level to be used by the SDK in your app. |
