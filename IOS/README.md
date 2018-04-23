@@ -7,7 +7,7 @@ This page will help you get started with BuzzSDK on IOS.
 ### Cocoa Pods
 1. To integrate _BuzzSDK_ for iOS into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-```
+```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
