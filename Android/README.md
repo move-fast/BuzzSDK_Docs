@@ -178,29 +178,33 @@ programmatically changed by setting attributes of the `Configuration` instance.
 
 | Config attribute | Resource key | Resource type/values | Description |
 | ---------------- | ------------ | -------------------- | ----------- |
-| logLevel | buzz_log_level | integer, 2 - 7, see Android class `Log` | Define the log level to be used by the SDK in your app |
-| maxTimeInactive | buzz_max_time_inactive | integer (seconds) | Indicates maximum amount of time which SDK Deck is allowed to stay present if the app has been made inactive (in seconds). Default value is 600 seconds (10 minutes) |
-| noAds | buzz_no_ads | boolean  | This option indicates that the SDK should ignore any ads provided by the backend config for the SDK session. This will be used when the host app still wants to present the SDK for content but no ads. (i.e. if the user is for example a subscribed user) Default value is `false`. |
+| `logLevel` | `buzz_log_level` | integer, 2 - 7, see Android class `Log` | Define the log level to be used by the SDK in your app |
+| `maxTimeInactive` | `buzz_max_time_inactive` | integer (seconds) | Indicates maximum amount of time which SDK Deck is allowed to stay present if the app has been made inactive (in seconds). Default value is 600 seconds (10 minutes) |
+| `noAds` | `buzz_no_ads` | boolean  | This option indicates that the SDK should ignore any ads provided by the backend config for the SDK session. This will be used when the host app still wants to present the SDK for content but no ads. (i.e. if the user is for example a subscribed user) Default value is `false`. |
 
 When presenting video content in addition to video ads, the style of the _title_ and _kicker_ of videos while presented
 in full screen or picture in picture mode can be configured in the same way by the attributes below:
 
 | Config attribute | Resource key | Resource type/values | Description |
 | ---------------- | ------------ | -------------------- | ----------- |
-| fullscreenKickerTextSize | buzz_fullscreen_kicker_text_size | dimension | The size in px to apply to the kicker of a video when displayed in full screen mode. Default value is 12dp converted to px. |
-| kickerTextColor | buzz_kicker_text_color | color | The color to use for the video's kicker text color when displayed. Default value is `@android:color/white` |
-| fullscreenTitleTextSize | buzz_fullscreen_title_text_size | dimension | The size in px to apply to the title of a video when displayed in full-screen mode. Default value is 12dp converted to px. |
-| pipTitleTextSize | buzz_pip_title_text_size | dimension | The size in px to apply to the title of a video when displayed in picture-in-picture mode. Default value is 12dp converted to px. |
-| titleTextColor | buzz_title_text_color | color | The color to use for the video's title text color when displayed. Default value is `@android:color/white` |
-| titleBackgroundColor | buzz_title_background_color | color | The color to use for the text areas background color on both full-screen and picture-in-picture mode. Default ARGB value is `0xA0000000` |
+| `fullscreenKickerTextSize` | `buzz_fullscreen_kicker_text_size` | dimension | The size in px to apply to the kicker of a video when displayed in full screen mode. Default value is 12dp converted to px. |
+| `kickerTextColor` | `buzz_kicker_text_color` | color | The color to use for the video's kicker text color when displayed. Default value is `@android:color/white` |
+| `fullscreenTitleTextSize` | `buzz_fullscreen_title_text_size` | dimension | The size in px to apply to the title of a video when displayed in full-screen mode. Default value is 12dp converted to px. |
+| `pipTitleTextSize` | `buzz_pip_title_text_size` | dimension | The size in px to apply to the title of a video when displayed in picture-in-picture mode. Default value is 12dp converted to px. |
+| `titleTextColor` | `buzz_title_text_color` | color | The color to use for the video's title text color when displayed. Default value is `@android:color/white` |
+| `titleBackgroundColor` | `buzz_title_background_color` | color | The color to use for the text areas background color on both full-screen and picture-in-picture mode. Default ARGB value is `0xA0000000` |
 
 ## Class reference
 
-### Class `com.buzztechno.sdk.Buzz`
+### Class Buzz
+
+`com.buzztechno.sdk.Buzz`
 
 Main class to interact with BuzzSDK.
 
-#### `public static void initialize(Application application, Config config, String apiKey, String secretKey)`
+#### initialize
+
+`public static void initialize(Application application, Config config, String apiKey, String secretKey)`
 
 Initializes BuzzSDK. Needs to be called before `getInstance()` and before any Activity has been created.
 
@@ -211,12 +215,16 @@ Initializes BuzzSDK. Needs to be called before `getInstance()` and before any Ac
 | `apiKey` | Please contact us to request your app configuration including the keys. |
 | `secretKey` | Please contact us to request your app configuration including the keys. |
 
-#### `public static Buzz getInstance()`
+#### getInstance
+
+`public static Buzz getInstance()`
 
 Return the singleton instance that allows you to communicate with the SDK. You need to call
 `initialize(Application, Config, String, String)` before calling this method.
 
-#### `public void addOrShowDeck()`
+#### addOrShowDeck
+
+`public void addOrShowDeck()`
 
 Trigger the display of the SDK content on top of the host app content. Once called, the SDK will start fetching
 ads, preloading content as necessary, etc... Once ready it will present the SDK content on top of the host app
@@ -228,24 +236,34 @@ In case the SDK was hidden using `hideDeck()`, calling this method will unhide i
 
 Subsequent calls to `addOrShowDeck()` will be ignored.
 
-#### `public void pausePlayback()`
+#### pausePlayback
+
+`public void pausePlayback()`
 
 Pause all video playback. This allows the host app to pause video playback in the SDK when the host app plays\
 its own video content.
 
-#### `public void hideDeck()`
+#### hideDeck
+
+`public void hideDeck()`
 
 Hide the deck, including all controls, and stop playback. To unhide it, call `addOrShowDeck()`.
 
-#### `public void removeDeck()`
+#### removeDeck
+
+`public void removeDeck()`
 
 Completely stop the BuzzSDK and remove it from the view hierarchy.
 
-####  `public BuzzState getState()`
+####  getState
+
+`public BuzzState getState()`
 
 Returns the current state of the SDK.
 
-#### `public void addOnRemoveAdsRequestedListener(@NonNull OnRemoveAdsRequestedListener listener)`
+#### addOnRemoveAdsRequestedListener
+
+`public void addOnRemoveAdsRequestedListener(@NonNull OnRemoveAdsRequestedListener listener)`
 
 Add a listener that is called when the user requests removing ads.
 
@@ -253,7 +271,9 @@ Add a listener that is called when the user requests removing ads.
 | --------- | ----------- |
 | `listener` | The listener to add. |
 
-#### `public void addOnPlaybackStartListener(@NonNull OnPlaybackStartListener listener)`
+#### addOnPlaybackStartListener
+
+`public void addOnPlaybackStartListener(@NonNull OnPlaybackStartListener listener)`
 
 Add a listener that is called whenever a video starts playing.
 
@@ -261,7 +281,9 @@ Add a listener that is called whenever a video starts playing.
 | --------- | ----------- |
 | `listener` | The listener to add. |
 
-#### `public void addOnBuzzStateChangedListener(@NonNull OnBuzzStateChangedListener listener)`
+#### addOnBuzzStateChangedListener
+
+`public void addOnBuzzStateChangedListener(@NonNull OnBuzzStateChangedListener listener)`
 
 Add a listener that is called after the state of the SDK has changed.
 
@@ -269,7 +291,9 @@ Add a listener that is called after the state of the SDK has changed.
 | --------- | ----------- |
 | `listener` | The listener to add. |
 
-#### `public void removeOnRemoveAdsRequestedListener(@NonNull OnRemoveAdsRequestedListener listener)`
+#### removeOnRemoveAdsRequestedListener
+
+`public void removeOnRemoveAdsRequestedListener(@NonNull OnRemoveAdsRequestedListener listener)`
 
 Remove listeners added with `addOnRemoveAdsRequestedListener(OnRemoveAdsRequestedListener)`.
 
@@ -277,7 +301,9 @@ Remove listeners added with `addOnRemoveAdsRequestedListener(OnRemoveAdsRequeste
 | --------- | ----------- |
 | `listener` | The listener to remove. |
 
-#### `public void removeOnVideoPlaybackStartListener(@NonNull OnPlaybackStartListener listener)`
+#### removeOnVideoPlaybackStartListener
+
+`public void removeOnVideoPlaybackStartListener(@NonNull OnPlaybackStartListener listener)`
 
 Remove listeners added with `addOnPlaybackStartListener(OnPlaybackStartListener)`.
 
@@ -285,7 +311,9 @@ Remove listeners added with `addOnPlaybackStartListener(OnPlaybackStartListener)
 | --------- | ----------- |
 | `listener` | The listener to remove. |
 
-#### `public void removeOnBuzzStateChangedListener(@NonNull OnBuzzStateChangedListener listener)`
+#### removeOnBuzzStateChangedListener
+
+`public void removeOnBuzzStateChangedListener(@NonNull OnBuzzStateChangedListener listener)`
 
 Remove listeners added with `addOnBuzzStateChangedListener(OnBuzzStateChangedListener)`.
 
@@ -293,12 +321,16 @@ Remove listeners added with `addOnBuzzStateChangedListener(OnBuzzStateChangedLis
 | --------- | ----------- |
 | `listener` | The listener to remove. |
 
-### Class `com.buzztechno.sdk.Config`
+### Class Config
 
-Configuration options for BuzzSDK. See [Configuration Options](#advance-configuration-options) for a description of
+`com.buzztechno.sdk.Config`
+
+Configuration options for BuzzSDK. See [Configuration Options](#advanced-configuration-options) for a description of
 available options.
 
-#### `public Config(Resources resources)`
+#### Config(Resources)
+
+`public Config(Resources resources)`
 
 Creates a new Config instance initialized from Android resources. You can either set those resources through XML,
 or change the fields of the Config instance programmatically. Calling
@@ -309,65 +341,81 @@ SDK initialization will be ignored.
 | --------- | ----------- |
 | `resources` | Default resources instance. |
 
-### Interface `com.buzztechno.sdk.OnBuzzStateChangedListener`
+### Interface OnBuzzStateChangedListener
+
+`com.buzztechno.sdk.OnBuzzStateChangedListener`
 
 Allows implementors to observe state changes on BuzzSDK. When started, the BussSDK state is always
 `BuzzState.NONE`.
 
-#### `void onStateChanged()`
+#### onStateChanged
+
+`void onStateChanged()`
 
 State has changed. Call `Buzz.getState()` to retrieve the new state.
 
-### Interface `com.buzztechno.sdk.OnPlaybackStartListener`
+### Interface OnPlaybackStartListener
+
+`com.buzztechno.sdk.OnPlaybackStartListener`
 
 Allows implementors to observe starting of video content playback. This will be notified every time video playback
 starts on any content element.
 
-#### `void onPlaybackStart()()`
+#### onPlaybackStart
+
+`void onPlaybackStart()`
 
 Playback has started.
 
-### Interface `OnRemoveAdsRequestedListener`
+### Interface OnRemoveAdsRequestedListener
+
+`com.buzztechno.sdk.OnRemoveAdsRequestedListener`
 
 When the Remove Ads Alert is shown, BuzzSDK will call your implementation when the user taps
 on the OK button of the alert view. It is your responsibility to act upon this call and direct the user to the
 appropriate section on your app where she can for instance subscribe to an ad free version of your app.
  
-#### `void onRemoveAdsRequested()`
+#### onRemoveAdsRequested
+
+`void onRemoveAdsRequested()`
 
 OK button was tapped.
 
-### Enum `com.buzztechno.sdk.BuzzState`
+### Enum BuzzState
+
+`com.buzztechno.sdk.BuzzState`
 
 The current state of BuzzSDK.
 
-#### `NONE`
+Enum constants:
 
-BuzzSDK is not loaded and its UI hierarchy is not set.
+- `NONE`
 
-#### `PREPARING`
+  BuzzSDK is not loaded and its UI hierarchy is not set.
 
-The BuzzSDK is fetching configuration from backend in preparation for presentation. This state is triggered after
-calling `Buzz.addOrShowDeck()` while in `NONE` state.
+- `PREPARING`
+
+  The BuzzSDK is fetching configuration from backend in preparation for presentation. This state is triggered after
+  calling `Buzz.addOrShowDeck()` while in `NONE` state.
     
-#### `PREPARED`
+- `PREPARED`
 
-The BuzzSDK configuration has been fetched, and content has started to load. The UI hierarchy is not yet set and
-no content is currently being presented.
+  The BuzzSDK configuration has been fetched, and content has started to load. The UI hierarchy is not yet set and
+  no content is currently being presented.
 
-#### `PRESENTING`
+- `PRESENTING`
 
-The BuzzSDK UI Hierarchy is set, and content is currently being presented.
+  The BuzzSDK UI Hierarchy is set, and content is currently being presented.
 
-#### `HIDDEN_BY_HOST_APP`
+- `HIDDEN_BY_HOST_APP`
 
-The BuzzSDK UI Hierarchy is set, content is displayed but currently hidden by host app request. The user cannot
-manually show it again but the host app can by calling `Buzz.addOrShowDeck()`.
+  The BuzzSDK UI Hierarchy is set, content is displayed but currently hidden by host app request. The user cannot
+  manually show it again but the host app can by calling `Buzz.addOrShowDeck()`.
 
-#### `HIDDEN_BY_USER`
+- `HIDDEN_BY_USER`
 
-The BuzzSDK UI Hierarchy is set, content is displayed but currently hidden on user request. A Show Videos button
-is displayed so the user can show the UI again.
+  The BuzzSDK UI Hierarchy is set, content is displayed but currently hidden on user request. A Show Videos button
+  is displayed so the user can show the UI again.
 
 ## Requirements
 
