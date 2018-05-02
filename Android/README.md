@@ -196,9 +196,9 @@ in full screen or picture in picture mode can be configured in the same way by t
 
 ## Class reference
 
-### Class Buzz
+### com.buzztechno.sdk.Buzz
 
-`com.buzztechno.sdk.Buzz`
+`public class Buzz`
 
 Main class to interact with BuzzSDK.
 
@@ -321,9 +321,9 @@ Remove listeners added with `addOnBuzzStateChangedListener(OnBuzzStateChangedLis
 | --------- | ----------- |
 | `listener` | The listener to remove. |
 
-### Class Config
+### com.buzztechno.sdk.Config
 
-`com.buzztechno.sdk.Config`
+`public class Config`
 
 Configuration options for BuzzSDK. See [Configuration Options](#advanced-configuration-options) for a description of
 available options.
@@ -341,9 +341,9 @@ SDK initialization will be ignored.
 | --------- | ----------- |
 | `resources` | Default resources instance. |
 
-### Interface OnBuzzStateChangedListener
+### com.buzztechno.sdk.OnBuzzStateChangedListener
 
-`com.buzztechno.sdk.OnBuzzStateChangedListener`
+`public interface OnBuzzStateChangedListener`
 
 Allows implementors to observe state changes on BuzzSDK. When started, the BussSDK state is always
 `BuzzState.NONE`.
@@ -354,9 +354,9 @@ Allows implementors to observe state changes on BuzzSDK. When started, the BussS
 
 State has changed. Call `Buzz.getState()` to retrieve the new state.
 
-### Interface OnPlaybackStartListener
+### com.buzztechno.sdk.OnPlaybackStartListener
 
-`com.buzztechno.sdk.OnPlaybackStartListener`
+`public interface OnPlaybackStartListener`
 
 Allows implementors to observe starting of video content playback. This will be notified every time video playback
 starts on any content element.
@@ -367,9 +367,9 @@ starts on any content element.
 
 Playback has started.
 
-### Interface OnRemoveAdsRequestedListener
+### com.buzztechno.sdk.OnRemoveAdsRequestedListener
 
-`com.buzztechno.sdk.OnRemoveAdsRequestedListener`
+`public interface OnRemoveAdsRequestedListener`
 
 When the Remove Ads Alert is shown, BuzzSDK will call your implementation when the user taps
 on the OK button of the alert view. It is your responsibility to act upon this call and direct the user to the
@@ -381,13 +381,11 @@ appropriate section on your app where she can for instance subscribe to an ad fr
 
 OK button was tapped.
 
-### Enum BuzzState
+### com.buzztechno.sdk.BuzzState
 
-`com.buzztechno.sdk.BuzzState`
+`public enum BuzzState`
 
 The current state of BuzzSDK.
-
-Enum constants:
 
 - `NONE`
 
