@@ -70,7 +70,7 @@ If you do not already have an Application class, create one and register it in t
 
 ## Use the SDK
 
-You interact with the SDK use the singleton Buzz instance that you get via `Buzz.getInstance()`. The call will fail if
+You interact with the SDK using the singleton Buzz instance that you get via `Buzz.getInstance()`. The call will fail if
 you haven't initialized the SDK before. You can register listeners or call any of the other public methods on that Buzz
 instance. In order to display the SDK UI together with you Activity, call `addOrShowDeck()` in your Activity's
 `onResume()` method. It does not matter if you call that method several times - the call will be ignored if the SDK is
@@ -110,8 +110,8 @@ Buzz.initialize(application, config, "e78grdmnqainn9pnz6fllabyzjxptpdq", "0pwb6e
 ## Observe SDK changes
 
 In most cases you would like to receive notifications from BuzzSDK for specific important events. 
-For this reasons, you can register change listeners with the Buzz instance. Here is an example from an Activity that
-register and de-registers listeners:
+For this reason, you can register change listeners with the Buzz instance. Here is an example from an Activity that
+registers and de-registers listeners:
 
 ```java
 @Override
@@ -135,7 +135,7 @@ protected void onPause() {
 ## Setup with _Groups_
 
 _Groups_ allow you to split users into several groups with different sets of online configuration settings. Groups and
-online configuration settings are managed via the _BuzzSDK_ dashboard (please contact us for access to the dashboard).
+online configuration settings are managed via the BuzzSDK dashboard (please contact us for access to the dashboard).
 
 When using groups you must set the `groupId` attribute of the BuzzSDK config. For example:
 
@@ -189,6 +189,181 @@ in full screen or picture in picture mode can be configured in the same way by t
 | pipTitleTextSize | buzz_pip_title_text_size | dimension | The size in px to apply to the title of a video when displayed in picture-in-picture mode. Default value is 12dp converted to px. |
 | titleTextColor | buzz_title_text_color | color | The color to use for the video's title text color when displayed. Default value is `@android:color/white` |
 | titleBackgroundColor | buzz_title_background_color | color | The color to use for the text areas background color on both full-screen and picture-in-picture mode. Default ARGB value is `0xA0000000` |
+
+## Class reference
+
+### Class `com.buzztechno.sdk.Buzz`
+
+Main class to interact with BuzzSDK.
+
+#### `public static void initialize(Application application, Config config, String apiKey, String secretKey)`
+
+Initializes BuzzSDK. Needs to be called before `getInstance()` and before any Activity has been created.
+
+| Parameter | Description |
+| --------- | ----------- |
+| `application` | The application instance. |
+| `config` | See [Configuration Options](#advance-configuration-options) for a description of configuration options. |
+| `apiKey` | Please contact us to request your app configuration including the keys. |
+| `secretKey` | Please contact us to request your app configuration including the keys. |
+
+#### `public static Buzz getInstance()`
+
+Return the singleton instance that allows you to communicate with the SDK. You need to call
+`initialize(Application, Config, String, String)` before calling this method.
+
+#### `public void addOrShowDeck()`
+
+Trigger the display of the SDK content on top of the host app content. Once called, the SDK will start fetching
+ads, preloading content as necessary, etc... Once ready it will present the SDK content on top of the host app
+UI. If the SDK fails to have content ready on time or once the SDK content has been dismissed by the user, then
+the SDK will release all content memory resources and restart the process if `addOrShowDeck()` is
+called again.
+
+In case the SDK was hidden using `hideDeck()`, calling this method will unhide it.
+
+Subsequent calls to `addOrShowDeck()` will be ignored.
+
+#### `public void pausePlayback()`
+
+Pause all video playback. This allows the host app to pause video playback in the SDK when the host app plays\
+its own video content.
+
+#### `public void hideDeck()`
+
+Hide the deck, including all controls, and stop playback. To unhide it, call `addOrShowDeck()`.
+
+#### `public void removeDeck()`
+
+Completely stop the BuzzSDK and remove it from the view hierarchy.
+
+####  `public BuzzState getState()`
+
+Returns the current state of the SDK.
+
+#### `public void addOnRemoveAdsRequestedListener(@NonNull OnRemoveAdsRequestedListener listener)`
+
+Add a listener that is called when the user requests removing ads.
+
+| Parameter | Description |
+| --------- | ----------- |
+| `listener` | The listener to add. |
+
+#### `public void addOnPlaybackStartListener(@NonNull OnPlaybackStartListener listener)`
+
+Add a listener that is called whenever a video starts playing.
+
+| Parameter | Description |
+| --------- | ----------- |
+| `listener` | The listener to add. |
+
+#### `public void addOnBuzzStateChangedListener(@NonNull OnBuzzStateChangedListener listener)`
+
+Add a listener that is called after the state of the SDK has changed.
+
+| Parameter | Description |
+| --------- | ----------- |
+| `listener` | The listener to add. |
+
+#### `public void removeOnRemoveAdsRequestedListener(@NonNull OnRemoveAdsRequestedListener listener)`
+
+Remove listeners added with `addOnRemoveAdsRequestedListener(OnRemoveAdsRequestedListener)`.
+
+| Parameter | Description |
+| --------- | ----------- |
+| `listener` | The listener to remove. |
+
+#### `public void removeOnVideoPlaybackStartListener(@NonNull OnPlaybackStartListener listener)`
+
+Remove listeners added with `addOnPlaybackStartListener(OnPlaybackStartListener)`.
+
+| Parameter | Description |
+| --------- | ----------- |
+| `listener` | The listener to remove. |
+
+#### `public void removeOnBuzzStateChangedListener(@NonNull OnBuzzStateChangedListener listener)`
+
+Remove listeners added with `addOnBuzzStateChangedListener(OnBuzzStateChangedListener)`.
+
+| Parameter | Description |
+| --------- | ----------- |
+| `listener` | The listener to remove. |
+
+### Class `com.buzztechno.sdk.Config`
+
+Configuration options for BuzzSDK. See [Configuration Options](#advance-configuration-options) for a description of
+available options.
+
+#### `public Config(Resources resources)`
+
+Creates a new Config instance initialized from Android resources. You can either set those resources through XML,
+or change the fields of the Config instance programmatically. Calling
+`Buzz.initialize(Application, Config, String, String)` copies the config. Changes to config fields after
+SDK initialization will be ignored.
+
+| Parameter | Description |
+| --------- | ----------- |
+| `resources` | Default resources instance. |
+
+### Interface `com.buzztechno.sdk.OnBuzzStateChangedListener`
+
+Allows implementors to observe state changes on BuzzSDK. When started, the BussSDK state is always
+`BuzzState.NONE`.
+
+#### `void onStateChanged()`
+
+State has changed. Call `Buzz.getState()` to retrieve the new state.
+
+### Interface `com.buzztechno.sdk.OnPlaybackStartListener`
+
+Allows implementors to observe starting of video content playback. This will be notified every time video playback
+starts on any content element.
+
+#### `void onPlaybackStart()()`
+
+Playback has started.
+
+### Interface `OnRemoveAdsRequestedListener`
+
+When the Remove Ads Alert is shown, BuzzSDK will call your implementation when the user taps
+on the OK button of the alert view. It is your responsibility to act upon this call and direct the user to the
+appropriate section on your app where she can for instance subscribe to an ad free version of your app.
+ 
+#### `void onRemoveAdsRequested()`
+
+OK button was tapped.
+
+### Enum `com.buzztechno.sdk.BuzzState`
+
+The current state of BuzzSDK.
+
+#### `NONE`
+
+BuzzSDK is not loaded and its UI hierarchy is not set.
+
+#### `PREPARING`
+
+The BuzzSDK is fetching configuration from backend in preparation for presentation. This state is triggered after
+calling `Buzz.addOrShowDeck()` while in `NONE` state.
+    
+#### `PREPARED`
+
+The BuzzSDK configuration has been fetched, and content has started to load. The UI hierarchy is not yet set and
+no content is currently being presented.
+
+#### `PRESENTING`
+
+The BuzzSDK UI Hierarchy is set, and content is currently being presented.
+
+#### `HIDDEN_BY_HOST_APP`
+
+The BuzzSDK UI Hierarchy is set, content is displayed but currently hidden by host app request. The user cannot
+manually show it again but the host app can by calling `Buzz.addOrShowDeck()`.
+
+#### `HIDDEN_BY_USER`
+
+The BuzzSDK UI Hierarchy is set, content is displayed but currently hidden on user request. A Show Videos button
+is displayed so the user can show the UI again.
 
 ## Requirements
 
