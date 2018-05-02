@@ -1,8 +1,12 @@
-# Getting Started Android
+# BuzzSDK documentation for Android
 
-This page will help you get started with BuzzSDK on Android.
+1. [Getting Started](#getting-started)
+2. [Class Reference](#class-reference)
+3. [Requirements](#requirements)
 
-## Add the SDK to your project
+## Getting Started
+
+### Add the SDK to your project
 
 BuzzSDK is published as a library module via Maven. Include the dependency below in your `app/build.gradle` file.
 
@@ -39,7 +43,7 @@ allprojects {
 Build your project. You can now import `com.buzztechno.sdk.Config` and `com.buzztechno.sdk.Buzz` into your app. These
 are the two classes that you need to interface with BuzzSDK.
     
-## Initialize the SDK
+### Initialize the SDK
 
 The SDK must be initialized before any Activity is launched. The easiest way to do so is to add the
 initialization code to your Application class' `onCreate()` method.
@@ -68,7 +72,7 @@ If you do not already have an Application class, create one and register it in t
 
 **It is important that you initialize the SDK before the first Activity is launched!**
 
-## Use the SDK
+### Use the SDK
 
 You interact with the SDK using the singleton Buzz instance that you get via `Buzz.getInstance()`. The call will fail if
 you haven't initialized the SDK before. You can register listeners or call any of the other public methods on that Buzz
@@ -85,7 +89,7 @@ protected void onResume() {
 }
 ```
 
-## Develop with the SDK
+### Develop with the SDK
 
 The SDK displays its content above your app. To make this happen, the `SYSTEM_ALERT_WINDOW` permission has to be granted
 to the app. When installing an app through the Play Store, this permission is granted automatically by the system.
@@ -98,7 +102,7 @@ varying names and places depending on the Android version and manufacturer flavo
 | S6 / Android 7.0      | Apps > Special Access (from the menu) > Apps that can appear on top           |
 | S5 mini / Android 6.0 | Application manager > Apps that can appear on top (from the menu)             |
 
-## Try it out
+### Try it out
 
 You can try out the SDK with our generic test credentials. Just copy the snippet below as your initialization call and
 you can see it in action.
@@ -107,7 +111,7 @@ you can see it in action.
 Buzz.initialize(application, config, "e78grdmnqainn9pnz6fllabyzjxptpdq", "0pwb6ep3em0t3dsamr0wqn1lin3h9tir");
 ```    
 
-## Observe SDK changes
+### Observe SDK changes
 
 In most cases you would like to receive notifications from BuzzSDK for specific important events. 
 For this reason, you can register change listeners with the Buzz instance. Here is an example from an Activity that
@@ -132,7 +136,7 @@ protected void onPause() {
 }
 ```
 
-## Setup with _Groups_
+### Setup with _Groups_
 
 _Groups_ allow you to split users into several groups with different sets of online configuration settings. Groups and
 online configuration settings are managed via the BuzzSDK dashboard (please contact us for access to the dashboard).
@@ -145,7 +149,7 @@ config.groupId = 1234;
 Buzz.initialize(application, config, "YOUR_API_KEY", "YOUR_SECRET_KEY");
 ```
 
-## Setup with _Remove Ads Alert_ option
+### Setup with _Remove Ads Alert_ option
 
 When your account configuration provides ads, you can setup BuzzSDK to show a custom alert dialog that allows the user
 to opt for an ad free version of the app via payment or subscriptions.
@@ -167,7 +171,7 @@ your app where she can, for instance, subscribe to an ad free version of the app
 buzz.addOnRemoveAdsRequestedListener(() -> Log.d(TAG, "Remove Ads button tapped"));
 ```
 
-## Advanced configuration options
+### Advanced configuration options
 
 You can configure BuzzSDK  during initialization. The configuration can be loaded from an Android resource, and/or
 programmatically changed by setting attributes of the `Configuration` instance.
@@ -203,7 +207,7 @@ Initializes BuzzSDK. Needs to be called before `getInstance()` and before any Ac
 | Parameter | Description |
 | --------- | ----------- |
 | `application` | The application instance. |
-| `config` | See [Configuration Options](#advance-configuration-options) for a description of configuration options. |
+| `config` | See [Configuration Options](#advanced-configuration-options) for a description of configuration options. |
 | `apiKey` | Please contact us to request your app configuration including the keys. |
 | `secretKey` | Please contact us to request your app configuration including the keys. |
 
