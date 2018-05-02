@@ -1,1 +1,3 @@
-# BuzzSDK_Docs
+# BuzzSDK Documentation
+[Android](/Android)
+[IOS](/IOS)
