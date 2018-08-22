@@ -16,7 +16,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'YOUR_APPLICATION_TARGET_NAME_HERE' do
-  pod 'BuzzSDK', '2.4.0'
+  pod 'BuzzSDK', '3.0.0'
 end
 ```
 2. Then, run the following command: 
@@ -46,7 +46,7 @@ bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BuzzSDK.framework/ios-stri
 ## Quick Launch
 
 1. Open your _AppDelegate.m_ file and import the _BuzzSDK_. 
-```objective-c
+```objc
 // Objective-C
 #import <BuzzSDK/BuzzSDK.h>
 ```
@@ -55,7 +55,7 @@ bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BuzzSDK.framework/ios-stri
 import BuzzSDK
 ```
 2. Copy the lines below and paste them into your AppDelegate’s `application:didFinishLaunchingWithOptions:launchOptions` method 
-```objective-c
+```objc
 // Objective-C
 [BuzzSDK startWithAPIKey: @"YOUR_API_KEY" secretKey: @"YOUR_SECRET_KEY"];
 ```
@@ -64,7 +64,7 @@ import BuzzSDK
 BuzzSDK.startWithAPIKey("YOUR_API_KEY", secretKey: "YOUR_SECRET_KEY")
 ```
 3. Call [`presentDeck`](#presentdeck) class method to display the SDK UI when appropriate. Typically on your `applicationDidBecomeActive` app delegate method call.
-```objective-c
+```objc
 // Objective-C
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [BuzzSDK presentDeck];
@@ -79,7 +79,7 @@ func applicationDidBecomeActive(_ application: UIApplication) {
 
 ## Try it out
 You can implement the SDK and try it out with our generic test credentials. Just copy the snippet below as your initialisation call and you could see it on action.
-```objective-c
+```objc
 // Objective-C
 [BuzzSDK startWithAPIKey: @"e78grdmnqainn9pnz6fllabyzjxptpdq" secretKey: @"0pwb6ep3em0t3dsamr0wqn1lin3h9tir"];
 ```
@@ -94,7 +94,7 @@ In most cases you would like to receive notifications from _BuzzSDK_ for specifi
 For this reasons, the _BuzzSDK_ class can have a delegate that must adopt the [_BuzzSDKDelegate_](#buzzsdkdelegate) protocol.
 
 To setup a delegate call the [`setDelegate:`](#setdelegate)  class method of the _BuzzSDK_ class after your call to start. For example:
-```objective-c
+```objc
 // Objective-C
 [BuzzSDK startWithAPIKey: @"YOUR_API_KEY" secretKey: @"YOUR_SECRET_KEY" andSDKOptions:nil];
 [BuzzSDK setDelegate:self];
@@ -108,7 +108,7 @@ BuzzSDK.setDelegate(self)
 _Groups_ allow you to split users into several groups with different sets of online configuration settings. Groups and online configuration settings are managed via _BuzzSDK_ dashboard (please contact us for access to the dashboard).
 
 When using groups you must initialise the _BuzzSDK_ by calling the  [`startWithAPIKey:secretKey:groupId:andSDKOptions:`](#startwithapikeysecretkeygroupidandsdkoptions) class method. For example:
-```objective-c
+```objc
 // Objective-C
 [BuzzSDK startWithAPIKey: @"YOUR_API_KEY" secretKey: @"YOUR_SECRET_KEY" groupId:0 andSDKOptions:nil];
 ```
@@ -121,7 +121,7 @@ When your account configuration provide Ads, you can setup the _BuzzSDK_ to pres
 
 To present such an alert the host app will need to provide the text string for the alert message in the `kBUZZSDKOptionRemoveAdsAlertTextKey` option when starting the _BuzzSDK_. If this string is not provided the alert will never be presented. 
 Options are provided as a dictionary when starting the _BuzzSDK_ using the [`startWithAPIKey:secretKey:andSDKOptions:`](#startwithapikeysecretkeyandsdkoptions) or [`startWithAPIKey:secretKey:groupId:andSDKOptions:`](#startwithapikeysecretkeygroupidandsdkoptions) class methods.
-```objective-c
+```objc
 // Objective-C
 @interface AppDelegate () <BuzzSDKDelegate>
 
@@ -150,7 +150,7 @@ BuzzSDK.startWithAPIKey("YOUR_API_KEY", secretKey: "YOUR_SECRET_KEY", andSDKOpti
 BuzzSDK.setDelegate(self)BuzzSDK
 ```
 If the  _Remove Ads Alert_ is presented, the _BuzzSDK_ will call your implementation of [`BuzzSDKDelegate`](#buzzsdkdelegate) method [`buzzSDKRemoveAdsButtonTapped`](#buzzsdkremoveadsbuttontapped) when the user taps on the OK button of the alert view. It is your responsibility to act upon this call and direct the user to the appropriate section on your app where he/she can for instance subscribe to an Ad free version of your app. 
-```objective-c
+```objc
 // Objective-C
 - (void)buzzSDKRemoveAdsButtonTapped {
     // Direct your UI for instance to Subscribe section,
@@ -191,7 +191,7 @@ When presenting video content in addition to video ads, the style of the _title_
 
 ## startWithAPIKey:secretKey:
 Initialises the _BuzzSDK_. Simplified version of initialisation using default options and default group.
-```objective-c
+```objc
 // Objective-C
 + (void)startWithAPIKey:(nonnull NSString *)APIKey secretKey:(nonnull NSString *)secretKey;
 }
@@ -207,7 +207,7 @@ class func start(withApiKey apiKey : String, secretKey : String)
 
 ## startWithAPIKey:secretKey:andSDKOptions:
 Initialises the _BuzzSDK_ including options and using default group.
-```objective-c
+```objc
 // Objective-C
 + (void)startWithAPIKey:(nonnull NSString *)APIKey secretKey:(nonnull NSString *)secretKey andSDKOptions:(nullable NSDictionary *)SDKOptions;
 ```
@@ -223,7 +223,7 @@ class func start(withApiKey apiKey : String, secretKey : String, andOptions SDKO
 
 ## startWithAPIKey:secretKey:groupId:andSDKOptions:
 Initialises _BuzzSDK_ with a group id and options (optional).
-```objective-c
+```objc
 // Objective-C
 + (void)startWithAPIKey:(nonnull NSString *)APIKey secretKey:(nonnull NSString *)secretKey groupId:(NSInteger)groupId andSDKOptions:(nullable NSDictionary *)SDKOptions;
 ```
@@ -240,7 +240,7 @@ class func start(withApiKey apiKey : String, secretKey : String, groupId : Int, 
 
 ## setDelegate
 Sets the delegate object to respond to _BuzzSDK_ call backs.
-```objective-c
+```objc
 // Objective-C
 + (void)setDelegate:(nonnull NSObject<BuzzSDKDelegate> *)delegate;
 ```
@@ -252,7 +252,7 @@ See [_BuzzSDKDelegate_](#buzzsdkdelegate)
 
 ## presentDeck
 Starts presentation of the _BuzzSDK_ UI on top of the host app’s UI.
-```objective-c
+```objc
 // Objective-C
 + (void)presentDeck;
 ```
@@ -265,7 +265,7 @@ It is safe to call this method multiple times, but it only has effect if _BuzzSD
 
 ## pause
 Instructs the _BuzzSDK_ to pause any video that is currently playing.
-```objective-c
+```objc
 // Objective-C
 + (void)pause
 ```
@@ -277,7 +277,7 @@ class func pause()
 ## hideDeck
 Will hide the _BuzzSDK_ UI (if presented) from the user. UI can be brought back on top of the host app UI by calling [`presentDeck`](#presentdeck)  again. If the UI is hidden when the app is sent to the background, the _BuzzSDK_ will be dismissed and calling [`presentDeck`](#presentdeck) will start a new _BuzzSDK_ Session.
 Similarly, calling `hideDeck` before the _BuzzSDK_ UI is set (i.e. while on [`BuzzSDKStateNone`](#buzzsdkstatehaschanged) or [`BuzzSDKStatePrepared`](#buzzsdkstatehaschanged) state) will terminate the _BuzzSDK_ session and calling [`presentDeck`](#presentdeck) will start a new _BuzzSDK_ Session.
-```objective-c
+```objc
 // Objective-C
 + (void)hideDeck;
 ```
@@ -288,7 +288,7 @@ class func hideDeck()
 
 ## dismissDeck
 Will completely stop the _BuzzSDK_ and remove it from the view hierarchy.
-```objective-c
+```objc
 // Objective-C
 + (void)dismissDeck;
 ```
@@ -308,7 +308,7 @@ The methods declared by the _BuzzSDKDelegate_ protocol allow the adopting delega
 -  [`buzzSDKStateHasChanged:`](#buzzsdkstatehaschanged)
 
 ### buzzSDKRemoveAdsButtonTapped
-```objective-c
+```objc
 // Objective-C
 - (void)buzzSDKRemoveAdsButtonTapped;
 ```
@@ -320,7 +320,7 @@ func buzzSDKRemoveAdsButtonTapped()
 If the  _Remove Ads Alert_ is presented, the _BuzzSDK_ will call your implementation of this method when the user taps on the **OK** button of the alert view. It is your responsibility to act upon this call and direct the user to the appropriate section on your app where he/she can for instance subscribe to an Ad free version of your app.
 
 ### buzzSDKHasStartedVideoPlayback
-```objective-c
+```objc
 // Objective-C
 - (void)buzzSDKHasStartedVideoPlayback;
 ```
@@ -332,7 +332,7 @@ func buzzSDKHasStartedVideoPlayback()
 Notifies the delegate that the _BuzzSDK_ has started playback of video content. This will be notified every time video playback starts on any content element.
 
 ### buzzSDKStateHasChanged:
-```objective-c
+```objc
 // Objective-C
 - (void)buzzSDKStateHasChanged:(BuzzSDKState)state
 ```
