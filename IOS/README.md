@@ -47,7 +47,7 @@ Paste the following line in this Run Script Phase's script text field:
 
 ## Quick Launch
 
-1. Open your _AppDelegate.m_ file and import the _BuzzSDK_.
+1. Open your _AppDelegate.m_ file and import the _BuzzSDK_
     ```smalltalk
     // Objective-C
     #import <BuzzSDK/BuzzSDK.h>
@@ -190,6 +190,7 @@ _BuzzSDK_ allows you also to define the following options. Just add the `key : v
 | `kBUZZSDKOptionLogLevel` | **Enum**<br>ObjC: Wrapped in NSNumber<br>Swift: Int (Enum raw value)<br>`BUZZSDKLogLevelNone`<br>`BUZZSDKLogLevelError`<br>`BUZZSDKLogLevelWarning`<br>`BUZZSDKLogLevelInfo`<br>`BUZZSDKLogLevelDebug` | Define the log level to be used by the SDK in your app. |
 | `kBUZZSDKOptionMaxTimeToLiveWhileAppInactiveKey` | **Int**(seconds)<br>ObjC: Wrapped in NSNumber<br>Swift: Int | Indicates maximum amount of time which SDK Deck is allowed to stay present if the app has been made inactive (in seconds).<br>Default value is 600 seconds (10 minutes) |
 | `kBUZZSDKOptionNoAdsKey` | **Bool**<br>ObjC: Wrapped in NSNumber<br>Swift: Bool | This option will indicates that the SDK should ignore any Ads provided by the backend config for the SDK session.<br>This will be used when the host app still wants to present the SDK for content but no Ads (i.e. if the user is for example a subscribed user)<br>Default value is `false` |
+| `kBUZZSDKOptionGDPRConsentKey` | **String**<br>ObjC: NSString<br>Swift: String | The Base64-encoded value for the app user's GDPR consent info as defined [here](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/Consent%20string%20and%20vendor%20list%20formats%20v1.1%20Final.md). When provided, the BuzzSDK will report it on tracking pixels and request URI's macros. |
 
 When presenting video content in addition to video ads, the style of the _title_ and _kicker_ of videos while presented in Full Screen or Picture in Picture mode can be configured as options in the same way by passing the `key : value` pairs below:
 
