@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 3.0.3
+
+_2018-10-09_
+
+ *  Fix: Make SDK work together with platform version 28 by enabling clear text traffic (needed for VAST).
+
 ## Version 3.0.2
 
 _2018-10-09_
