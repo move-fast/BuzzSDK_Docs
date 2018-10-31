@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 3.0.4
+
+_2018-10-31_
+
+ *  New: Keep screen on while in fullscreen
+ *  Fix: Increase delay to wait for new `Activities` coming online
+
 ## Version 3.0.3
 
 _2018-10-09_
