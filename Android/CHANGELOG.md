@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 3.0.5
+
+_2018-12-04_
+
+ *  New: Switch to different overlay mechanism that doesn't need the `SYSTEM_ALERT_WINDOW` permission
+
 ## Version 3.0.4
 
 _2018-10-31_
