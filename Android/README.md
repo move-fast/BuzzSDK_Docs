@@ -13,7 +13,7 @@ BuzzSDK is published as a library module via Maven. Include the dependency below
 ```groovy
 dependencies {
     //...
-    implementation 'com.buzztechno:sdk:3.0.5'
+    implementation 'com.buzztechno:sdk:3.0.6'
 }
 ```
 
@@ -91,7 +91,7 @@ protected void onResume() {
 
 ### Develop with the SDK
 
-Update: Version 3.0.5 of the SDK uses a different mechanism that doesn't rely on `SYSTEM_ALERT_WINDOW` permission.
+Update: Versions > 3.0.5 of the SDK uses a different mechanism that doesn't rely on the `SYSTEM_ALERT_WINDOW` permission.
 
 ~~The SDK displays its content above your app. To make this happen, the `SYSTEM_ALERT_WINDOW` permission has to be granted
 to the app. When installing an app through the Play Store, this permission is granted automatically by the system.

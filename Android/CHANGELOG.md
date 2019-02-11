@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 3.0.6
+
+_2018-02-11_
+
+ *  Fix: Use correct HTTP verb when sending device updates to the backend
+
 ## Version 3.0.5
 
 _2018-12-04_
