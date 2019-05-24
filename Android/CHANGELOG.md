@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 3.0.7
+
+_2018-05-24_
+
+ *  Fix: Correctly initialize session for tracking
+
 ## Version 3.0.6
 
 _2018-02-11_
