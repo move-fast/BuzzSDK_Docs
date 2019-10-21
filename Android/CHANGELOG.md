@@ -1,5 +1,17 @@
 # Change Log
 
+## Version 3.0.8
+
+_2018-10-06_
+
+ *  Fix: Ignore corrupt tracking data from previous sessions 
+
+## Version 3.0.7
+
+_2018-05-24_
+
+ *  Fix: Correctly initialize session for tracking
+
 ## Version 3.0.6
 
 _2018-02-11_
