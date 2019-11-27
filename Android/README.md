@@ -13,7 +13,7 @@ BuzzSDK is published as a library module via Maven. Include the dependency below
 ```groovy
 dependencies {
     //...
-    implementation 'com.buzztechno:sdk:3.0.8'
+    implementation 'com.buzztechno:sdk:3.0.9'
 }
 ```
 
