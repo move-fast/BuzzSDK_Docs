@@ -336,6 +336,21 @@ Will completely stop the _BuzzSDK_ and remove it from the view hierarchy.
 class func dismissDeck()
 ```
 
+## updateGDPRConsent
+
+Will set or update the GDPR consent string (`gdprConsent`) to be used by the _BuzzSDK_ when performing Ad request and Ad tracking.
+
+For details on how to generate the _BASE64_ GDPR Consent string for your users, please refer to IAB's [Transparency & Consent Framework](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/Consent%20string%20and%20vendor%20list%20formats%20v1.1%20Final.md#vendor-consent-string-format-)
+
+```smalltalk
+// Objective-C
++ (void)updateGDPRConsent:(nonnull NSString *)gdprConsent;
+```
+```swift
+// Swift
+class func updateGDPRConsent(_ gdprConsent : String)
+```
+
 # _BuzzSDKDelegate_ Protocol
 
 ## BuzzSDKDelegate
