@@ -17,7 +17,7 @@
     use_frameworks!
 
     target 'YOUR_APPLICATION_TARGET_NAME_HERE' do
-      pod 'BuzzSDK', '3.2.1'
+      pod 'BuzzSDK', '3.3.0'
     end
 ```
 1. Then, run the following command:
