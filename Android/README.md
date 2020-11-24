@@ -13,7 +13,7 @@ BuzzSDK is published as a library module via Maven. Include the dependency below
 ```groovy
 dependencies {
     //...
-    implementation 'com.buzztechno:sdk:3.0.9'
+    implementation 'com.buzztechno:sdk:3.0.10'
 }
 ```
 
@@ -183,6 +183,7 @@ programmatically changed by setting attributes of the `Configuration` instance.
 | `logLevel` | `buzz_log_level` | integer, 2 - 7, see Android class `Log` | Define the log level to be used by the SDK in your app |
 | `maxTimeInactive` | `buzz_max_time_inactive` | integer (seconds) | Indicates maximum amount of time which SDK Deck is allowed to stay present if the app has been made inactive (in seconds). Default value is 600 seconds (10 minutes) |
 | `noAds` | `buzz_no_ads` | boolean  | This option indicates that the SDK should ignore any ads provided by the backend config for the SDK session. This will be used when the host app still wants to present the SDK for content but no ads. (i.e. if the user is for example a subscribed user) Default value is `false`. |
+| `gdprConsentInfo` | `buzz_gdpr_consent_info` | String | The Base64-encoded value for the app user's GDPR consent info as defined [here](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/Consent%20string%20and%20vendor%20list%20formats%20v1.1%20Final.md). When provided, the BuzzSDK will report it on tracking pixels and request URI's macros. |
 
 When presenting video content in addition to video ads, the style of the _title_ and _kicker_ of videos while presented
 in full screen or picture in picture mode can be configured in the same way by the attributes below:
@@ -262,6 +263,18 @@ Completely stop the BuzzSDK and remove it from the view hierarchy.
 `public BuzzState getState()`
 
 Returns the current state of the SDK.
+
+#### updateGDPRConsent
+
+`public updateGDPRConsent(@NonNull String gdpr_consent)`
+
+Will set or update the GDPR consent string to be used by the _BuzzSDK_ when performing Ad request and Ad tracking.
+
+For details on how to generate the _BASE64_ GDPR Consent string for your users, please refer to IAB's [Transparency & Consent Framework](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/Consent%20string%20and%20vendor%20list%20formats%20v1.1%20Final.md#vendor-consent-string-format-)
+
+| Parameter | Description |
+| --------- | ----------- |
+| `gdpr_consent` | The BASE64 GDPR consent string to use on Ads request and tracking macros. |
 
 #### addOnRemoveAdsRequestedListener
 
